@@ -118,7 +118,28 @@ footer {
 <p>Grow Your Instagram Without Creating Content From Scratch.</p>
 <p class="old-price">₹999</p>
 <p class="price">🔥 Today Only ₹99</p>
-<a href="https://cashfree-backend-b2xr.onrender.com" class="btn">Get Instant Access for ₹99</a>
+<button onclick="payNow()" style="padding:12px 25px; background:#6a0dad; color:white; border:none; border-radius:5px;">
+  Buy Now ₹99
+</button>
+
+<script>
+async function payNow() {
+  try {
+    const response = await fetch("https://cashfree-backend-b2xr.onrender.com", {
+      method: "POST"
+    });
+
+    const data = await response.json();
+
+    // Redirect to Cashfree Checkout
+    window.location.href = data.payment_link;
+
+  } catch (error) {
+    alert("Payment Error. Try Again.");
+    console.error(error);
+  }
+}
+</script>
 </div>
 </section>
 
@@ -173,7 +194,28 @@ footer {
 
 <section style="background:#111;">
 <div class="container">
-<a href="https://cashfree-backend-b2xr.onrender.com" class="btn">Download Now for ₹99</a>
+<button onclick="payNow()" style="padding:12px 25px; background:#6a0dad; color:white; border:none; border-radius:5px;">
+  Buy Now ₹99
+</button>
+
+<script>
+async function payNow() {
+  try {
+    const response = await fetch("https://cashfree-backend-b2xr.onrender.com", {
+      method: "POST"
+    });
+
+    const data = await response.json();
+
+    // Redirect to Cashfree Checkout
+    window.location.href = data.payment_link;
+
+  } catch (error) {
+    alert("Payment Error. Try Again.");
+    console.error(error);
+  }
+}
+</script>
 </div>
 </section>
 
@@ -212,4 +254,5 @@ Get Instant Access for ₹99
 </body>
 
 </html>
+
 
