@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Send Download Email</title>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+emailjs.init("YOUR_PUBLIC_KEY");
+})();
+</script>
+
+</head>
+
+<body>
+
+<h2>Get Your Download</h2>
+
+<input type="email" id="email" placeholder="Enter your email">
+
+<button onclick="sendEmail()">Send Download</button>
+
+<script>
+
+function sendEmail(){
+
+var templateParams = {
+to_email: document.getElementById("email").value,
+message: "Download Link: https://yourwebsite.com/download.html Password: 4582ABCD"
+};
+
+emailjs.send("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",templateParams)
+.then(function(response){
+alert("Email Sent!");
+}, function(error){
+alert("Failed");
+});
+
+}
+
+</script>
+
+</body>
+</html>
