@@ -59,14 +59,29 @@ background:#2980b9;
 <script>
 
 const params = new URLSearchParams(window.location.search);
+
+// token from server
 const token = params.get("token");
 
-const server =
-"https://secure-download-server-a77v.onrender.com/download?token=" + token;
+// Cashfree order id check
+const orderStatus = params.get("order_status");
 
-if(token){
+let server = "";
 
-// auto redirect after 2 seconds
+// if payment success
+if(orderStatus === "PAID"){
+
+document.getElementById("msg").innerHTML =
+"Payment successful. Preparing your download...";
+
+// call server to generate token
+fetch("https://secure-download-server-a77v.onrender.com/generate")
+.then(res=>res.json())
+.then(data=>{
+
+server = data.download;
+
+// auto redirect
 setTimeout(()=>{
 window.location.href = server;
 },2000);
@@ -77,14 +92,36 @@ document.getElementById("downloadBtn").onclick=function(){
 window.location.href = server;
 };
 
-}else{
+});
+
+}
+
+// token download link
+else if(token){
+
+server =
+"https://secure-download-server-a77v.onrender.com/download?token=" + token;
+
+setTimeout(()=>{
+window.location.href = server;
+},2000);
+
+document.getElementById("downloadBtn").style.display="inline-block";
+document.getElementById("downloadBtn").onclick=function(){
+window.location.href = server;
+};
+
+}
+
+// invalid link
+else{
 
 document.querySelector(".loader").style.display="none";
-document.getElementById("msg").innerHTML="Invalid or missing download token.";
+document.getElementById("msg").innerHTML="Invalid or missing download link.";
 
 }
 
 </script>
-
 </body>
 </html>
+
