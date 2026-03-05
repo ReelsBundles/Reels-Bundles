@@ -1,23 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Download</title>
+<meta charset="UTF-8">
+<title>Preparing Your Download</title>
+
+<style>
+body{
+font-family: Arial;
+text-align:center;
+padding-top:100px;
+background:#f5f5f5;
+}
+
+.loader{
+border:6px solid #f3f3f3;
+border-top:6px solid #3498db;
+border-radius:50%;
+width:60px;
+height:60px;
+animation:spin 1s linear infinite;
+margin:auto;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
+}
+
+button{
+padding:12px 20px;
+font-size:16px;
+background:#3498db;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#2980b9;
+}
+</style>
+
 </head>
 
 <body>
 
-<h2>Your download will start automatically...</h2>
+<h2>Preparing Your Download...</h2>
+
+<div class="loader"></div>
+
+<p id="msg">Please wait while we verify your download link.</p>
+
+<br>
+
+<button id="downloadBtn" style="display:none;">Download Now</button>
 
 <script>
 
 const params = new URLSearchParams(window.location.search);
 const token = params.get("token");
 
-if(token){
-window.location.href =
+const server =
 "https://secure-download-server-a77v.onrender.com/download?token=" + token;
+
+if(token){
+
+// auto redirect after 2 seconds
+setTimeout(()=>{
+window.location.href = server;
+},2000);
+
+// manual button
+document.getElementById("downloadBtn").style.display="inline-block";
+document.getElementById("downloadBtn").onclick=function(){
+window.location.href = server;
+};
+
 }else{
-document.body.innerHTML = "Token missing";
+
+document.querySelector(".loader").style.display="none";
+document.getElementById("msg").innerHTML="Invalid or missing download token.";
+
 }
 
 </script>
