@@ -2,126 +2,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Preparing Your Download</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download Your Bundle</title>
 <style>
-body{
-font-family: Arial;
-text-align:center;
-padding-top:100px;
-background:#f5f5f5;
-}
-
-.loader{
-border:6px solid #f3f3f3;
-border-top:6px solid #3498db;
-border-radius:50%;
-width:60px;
-height:60px;
-animation:spin 1s linear infinite;
-margin:auto;
-}
-
-@keyframes spin{
-0%{transform:rotate(0deg);}
-100%{transform:rotate(360deg);}
-}
-
-button{
-padding:12px 20px;
-font-size:16px;
-background:#3498db;
-color:white;
-border:none;
-border-radius:6px;
-cursor:pointer;
-}
-
-button:hover{
-background:#2980b9;
-}
+body{background:#0f0f0f;color:white;font-family:Poppins;text-align:center;padding:50px}
+.btn{background:#00ff88;color:black;padding:15px 35px;font-size:20px;text-decoration:none;border-radius:8px;display:inline-block;margin-top:20px}
 </style>
-
 </head>
-
 <body>
 
-<h2>Preparing Your Download...</h2>
+<h1>🎉 Payment Successful</h1>
+<p>Click below to download your bundle:</p>
 
-<div class="loader"></div>
+<a href="https://secure-download-server-a77v.onrender.com/download?token=" + token; class="btn">Download Now</a>
 
-<p id="msg">Please wait while we verify your download link.</p>
-
-<br>
-
-<button id="downloadBtn" style="display:none;">Download Now</button>
-
-<script>
-
-const params = new URLSearchParams(window.location.search);
-
-// token from server
-const token = params.get("token");
-
-// Cashfree order id check
-const orderStatus = params.get("order_status");
-
-let server = "";
-
-// if payment success
-if(orderStatus === "PAID"){
-
-document.getElementById("msg").innerHTML =
-"Payment successful. Preparing your download...";
-
-// call server to generate token
-fetch("https://secure-download-server-a77v.onrender.com/generate")
-.then(res=>res.json())
-.then(data=>{
-
-server = data.download;
-
-// auto redirect
-setTimeout(()=>{
-window.location.href = server;
-},2000);
-
-// manual button
-document.getElementById("downloadBtn").style.display="inline-block";
-document.getElementById("downloadBtn").onclick=function(){
-window.location.href = server;
-};
-
-});
-
-}
-
-// token download link
-else if(token){
-
-server =
-"https://secure-download-server-a77v.onrender.com/download?token=" + token;
-
-setTimeout(()=>{
-window.location.href = server;
-},2000);
-
-document.getElementById("downloadBtn").style.display="inline-block";
-document.getElementById("downloadBtn").onclick=function(){
-window.location.href = server;
-};
-
-}
-
-// invalid link
-else{
-
-document.querySelector(".loader").style.display="none";
-document.getElementById("msg").innerHTML="Invalid or missing download link.";
-
-}
-
-</script>
 </body>
 </html>
-
