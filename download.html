@@ -35,7 +35,6 @@ text-align:center;
 box-shadow:0 10px 40px rgba(0,0,0,0.5);
 max-width:450px;
 width:90%;
-animation:fadeIn 1s ease;
 }
 
 h1{
@@ -57,32 +56,8 @@ padding:15px 40px;
 font-size:18px;
 text-decoration:none;
 border-radius:10px;
-display:inline-block;
+display:none;
 font-weight:600;
-transition:0.3s;
-box-shadow:0 5px 20px rgba(0,255,136,0.4);
-}
-
-.btn:hover{
-background:#00cc6a;
-transform:translateY(-3px);
-box-shadow:0 8px 25px rgba(0,255,136,0.6);
-}
-
-.icon{
-font-size:60px;
-margin-bottom:15px;
-}
-
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
 }
 
 </style>
@@ -93,12 +68,9 @@ transform:translateY(0);
 
 <div class="container">
 
-<div class="icon">🎉</div>
+<h1>Payment Successful 🎉</h1>
 
-<h1>Payment Successful</h1>
-
-<p>Your payment was completed successfully.  
-Click the button below to download your bundle.</p>
+<p id="message">Preparing your download...</p>
 
 <a id="downloadBtn" class="btn">Download Now</a>
 
@@ -117,7 +89,7 @@ document.getElementById("downloadBtn").href =
 document.getElementById("downloadBtn").style.display = "inline-block";
 
 document.getElementById("message").innerText =
-"Click the button below to download your file.";
+"Click the button below to download your bundle.";
 
 }else{
 
@@ -128,7 +100,5 @@ document.getElementById("message").innerText =
 
 </script>
 
-
 </body>
 </html>
-
