@@ -1,20 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Download Your Bundle</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
-body{background:#0f0f0f;color:white;font-family:Poppins;text-align:center;padding:50px}
-.btn{background:#00ff88;color:black;padding:15px 35px;font-size:20px;text-decoration:none;border-radius:8px;display:inline-block;margin-top:20px}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins', sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+}
+
+.container{
+background:#111;
+padding:50px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 10px 40px rgba(0,0,0,0.5);
+max-width:450px;
+width:90%;
+animation:fadeIn 1s ease;
+}
+
+h1{
+color:#00ff88;
+font-size:34px;
+margin-bottom:15px;
+}
+
+p{
+font-size:16px;
+opacity:0.8;
+margin-bottom:25px;
+}
+
+.btn{
+background:#00ff88;
+color:black;
+padding:15px 40px;
+font-size:18px;
+text-decoration:none;
+border-radius:10px;
+display:inline-block;
+font-weight:600;
+transition:0.3s;
+box-shadow:0 5px 20px rgba(0,255,136,0.4);
+}
+
+.btn:hover{
+background:#00cc6a;
+transform:translateY(-3px);
+box-shadow:0 8px 25px rgba(0,255,136,0.6);
+}
+
+.icon{
+font-size:60px;
+margin-bottom:15px;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
 </style>
+
 </head>
+
 <body>
 
-<h1>🎉 Payment Successful</h1>
-<p>Click below to download your bundle:</p>
+<div class="container">
 
-<a href="https://secure-download-server-a77v.onrender.com/download?token=" + token; class="btn">Download Now</a>
+<div class="icon">🎉</div>
+
+<h1>Payment Successful</h1>
+
+<p>Your payment was completed successfully.  
+Click the button below to download your bundle.</p>
+
+<a id="downloadBtn" class="btn">Download Now</a>
+
+</div>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const token = params.get("token");
+
+if(token){
+document.getElementById("downloadBtn").href =
+"https://secure-download-server-a77v.onrender.com/download?token=" + token;
+}else{
+document.getElementById("downloadBtn").innerText = "Invalid Download Link";
+}
+
+</script>
 
 </body>
 </html>
