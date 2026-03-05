@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Download</title>
+<title>Downloading...</title>
 </head>
+
 <body>
 
-<h2>Download Your Product</h2>
-
-<input type="text" id="token" placeholder="Enter your access token">
-<button onclick="download()">Download</button>
+<h2>Your download is starting...</h2>
 
 <script>
-function download(){
 
-let token = document.getElementById("token").value;
+const urlParams = new URLSearchParams(window.location.search);
+const token = urlParams.get("token");
 
+if(token){
 window.location.href =
-"https://yourserver.onrender.com/download?token="+token;
-
+"https://secure-download-server-a77v.onrender.com/download?token=" + token;
 }
+
 </script>
 
 </body>
