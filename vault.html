@@ -3,6 +3,7 @@
 
 <head>
 
+
 <title>Reels Bundles Vault</title>
 
 <style>
@@ -45,9 +46,19 @@ text-decoration:none;
 
 <body>
 
+<script>
+
+if(sessionStorage.getItem("vaultAccess")!=="yes"){
+
+document.body.innerHTML="<h2 style='color:white;text-align:center;margin-top:100px'>Access Denied</h2>"
+
+}
+
+</script>
 <h1>📚 Reels Bundle PDF Vault</h1>
   
 <div id="pdfList"></div>
+
 
 <script>
 
