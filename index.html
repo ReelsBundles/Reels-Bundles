@@ -118,15 +118,17 @@ footer {
 <p>Grow Your Instagram Without Creating Content From Scratch.</p>
 <p class="old-price">₹999</p>
 <p class="price">🔥 Today Only ₹99</p>
-<a href="https://payments.cashfree.com/forms?code=Reels-Bundles" style="text-decoration: none;">
-    <button style="padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; border-radius: 5px;">
-        Pay Now
-    </button>
-<script>
-sessionStorage.setItem("reelsAccess","yes");
-location.href="download.html";
-</script>   
+<a href="#" onclick="buyNow()" 
+style="padding:10px 20px; background-color:#007bff; color:white; border:none; cursor:pointer; border-radius:5px; text-decoration:none;">
+Pay Now
 </a>
+
+<script>
+function buyNow(){
+sessionStorage.setItem("reelsAccess","yes");
+window.location.href="https://payments.cashfree.com/forms?code=Reels-Bundles";
+}
+</script>
 </div>
 </section>
 
@@ -183,15 +185,17 @@ location.href="download.html";
 <div class="container">
 <p class="old-price">₹999</p>
 <p class="price">🔥 Today Only ₹99</p>
-<a href="https://payments.cashfree.com/forms?code=Reels-Bundles" style="text-decoration: none;">
-    <button style="padding: 10px 20px; background-color: #007bff; color: white; border: none; cursor: pointer; border-radius: 5px;">
-        Pay Now
-    </button>
+<a href="#" onclick="buyNow()" 
+style="padding:10px 20px; background-color:#007bff; color:white; border:none; cursor:pointer; border-radius:5px; text-decoration:none;">
+Pay Now
+</a>
+
 <script>
+function buyNow(){
 sessionStorage.setItem("reelsAccess","yes");
-location.href="download.html";
+window.location.href="https://payments.cashfree.com/forms?code=Reels-Bundles";
+}
 </script>
-    
 </div>
 </section>
 
@@ -220,6 +224,7 @@ location.href="download.html";
 </body>
 
 </html>
+
 
 
 
