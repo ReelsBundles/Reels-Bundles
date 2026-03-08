@@ -50,11 +50,45 @@ box-shadow:0 20px 50px rgba(0,0,0,0.6);
 h1{
 font-size:90px;
 margin:10px 0;
-color:#00eaff;
+color:#000; /* black text */
+
 text-shadow:
-0 0 10px #00eaff,
-0 0 25px #00eaff,
-0 0 45px #00eaff;
+0 0 5px #ff00cc,
+0 0 10px #ff00cc,
+0 0 20px #3333ff,
+0 0 30px #00c6ff,
+0 0 40px #ff0080;
+
+animation:rgbGlow 4s linear infinite;
+}
+
+@keyframes rgbGlow{
+
+0%{
+text-shadow:
+0 0 5px #ff00cc,
+0 0 10px #ff00cc,
+0 0 20px #3333ff,
+0 0 30px #00c6ff;
+}
+
+50%{
+text-shadow:
+0 0 5px #00c6ff,
+0 0 10px #00c6ff,
+0 0 20px #ff0080,
+0 0 30px #3333ff;
+}
+
+100%{
+text-shadow:
+0 0 5px #ff00cc,
+0 0 10px #ff00cc,
+0 0 20px #3333ff,
+0 0 30px #00c6ff;
+}
+
+}
 }/* RGB border */
 
 .container:before{
